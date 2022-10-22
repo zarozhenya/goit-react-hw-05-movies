@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { StyledCard, StyledContainer, StyledImage } from './MovieCard.styled';
 
 const BASE_URL = 'https://image.tmdb.org/t/p/w300';
@@ -27,4 +29,20 @@ export const MovieCard = ({
       </div>
     </StyledCard>
   );
+};
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+      })
+    ),
+  }),
 };

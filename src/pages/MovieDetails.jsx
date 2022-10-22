@@ -1,11 +1,11 @@
 import { useLocation, useNavigate, useParams, Outlet } from 'react-router-dom';
 import { MovieCard } from 'components/MovieCard/MovieCard';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { fetchMovieById } from 'api/tmdb';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useRef } from 'react';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const location = useRef(useLocation());
@@ -25,7 +25,11 @@ export const MovieDetails = () => {
           <MovieInfo />
         </>
       )}
-      <Outlet />
+      <Suspense fallback={<p>loading...</p>}>
+        <Outlet />
+      </Suspense>
     </main>
   );
 };
+
+export default MovieDetails;

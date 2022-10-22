@@ -1,14 +1,13 @@
-import { Link } from 'react-router-dom';
-import { StyledList } from './MovieInfo.styled';
+import { StyledList, StyledLink } from './MovieInfo.styled';
 export const MovieInfo = () => {
   return (
     <StyledList>
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <StyledLink to="cast">Cast</StyledLink>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <StyledLink to="reviews">Reviews</StyledLink>
         </li>
       </ul>
     </StyledList>
