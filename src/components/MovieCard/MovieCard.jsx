@@ -1,11 +1,16 @@
-const BASE_URL = 'https://image.tmdb.org/t/p/w185';
+import { StyledCard, StyledContainer, StyledImage } from './MovieCard.styled';
+
+const BASE_URL = 'https://image.tmdb.org/t/p/w300';
 
 export const MovieCard = ({
   movie: { poster_path, title, release_date, vote_average, overview, genres },
 }) => {
   return (
-    <div>
-      <img src={`${BASE_URL}/${poster_path}`} alt={title} />
+    <StyledCard>
+      <StyledContainer>
+        <StyledImage src={`${BASE_URL}/${poster_path}`} alt={title} />
+      </StyledContainer>
+
       <div>
         <h1>
           {title} ({new Date(release_date).getFullYear()})
@@ -20,6 +25,6 @@ export const MovieCard = ({
           ))}
         </ul>
       </div>
-    </div>
+    </StyledCard>
   );
 };
